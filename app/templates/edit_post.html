@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+    {{ super() }}
+    {{ ckeditor.load() }}
+{% endblock %}
+
+{% block title %}TopNews - 编辑文章{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>编辑文章</h1>
+    </div>
+    <div>
+{#        {{ wtf.quick_form(form) }}#}
+        <form method="post">
+                {{ form.csrf_token }}
+                {{ form.body }}
+                {{ form.submit() }}
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

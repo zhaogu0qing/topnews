@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}TopNews{% endblock %}
+
+{% block page_content %}
+            <h3>
+                Hi,
+                {% if current_user.is_authenticated %}
+                    {{ current_user.username }}
+                {% else %}
+                    Stranger
+                {% endif %}!
+            </h3>
+
+            <div class="jumbotron">
+            <h3>每天醒来世界发生了什么</h3>
+            <p>sina/nhk</p>
+            </div>
+          <div class="row">
+
+              {% for n in news %}
+                <div class="col-xs-6 col-lg-4">
+                  <p>{{ n.title }}</p>
+                    <p>{{ n.n_date }}</p>
+                  <p><a class="btn btn-default" href="news/news/{{ n._id }}" role="button">View details &raquo;</a></p>
+                </div><!--/.col-xs-6.col-lg-4-->
+              {% endfor %}
+          </div>
+
+{% endblock %}

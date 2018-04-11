@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}TopNews - News{% endblock %}
+
+{% block page_content %}
+        <div class="container">
+          <div class="jumbotron">
+           <h3>Jike Topic Select</h3>
+{#              <a href="" class="btn btn-default">选好了,立刻运行爬虫</a>#}
+          </div>
+
+          <ul class="list-group">
+              {% for topic in topics %}
+              <li class="list-group-item">
+                  <p>{{ topic.content }} <span class="badge">{{ topic.subscribersCount }}</span></p>
+                  <a href="{{ url_for('news.modify_topic', topic_id=topic.topicId) }}" class="btn btn-primary">Edit</a>
+              </li>
+              {% endfor %}
+          </ul>
+        </div>
+{% endblock %}

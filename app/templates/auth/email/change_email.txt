@@ -1,0 +1,6 @@
+亲爱的 {{ user.username }},
+点击 {{ url_for('auth.change_email', token=token, _external=True) }}确认你的邮箱地址.
+或者复制粘贴下面的地址到你的浏览器:
+{{ url_for('auth.change_email', token=token, _external=True) }}
+Sincerely,
+TopNews 团队

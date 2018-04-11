@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}TopNews - News{% endblock %}
+
+{% block page_content %}
+        <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">选择topic</button>
+          </p>
+          <div class="jumbotron">
+           <h3>Jike</h3>
+              <p>{{ current_topic.content }}</p>
+          </div>
+          <div class="row">
+
+              {% for n in current_topic_items %}
+                <div class="col-xs-6 col-lg-4">
+                  <p>{{ n.content[:100] + '...' }}</p>
+                    <p>{{ n.createdAt[:10] }}</p>
+                  <p><a class="btn btn-default" href="{{ n.linkUrl }}" role="button">View details &raquo;</a></p>
+                </div><!--/.col-xs-6.col-lg-4-->
+              {% endfor %}
+
+          </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+              {% for topic in topics %}
+              <a href="{{ topic.topicId }}" class="list-group-item">{{ topic.content }}</a>
+              {% endfor %}
+          </div>
+        </div><!--/.sidebar-offcanvas-->
+      </div><!--/row-->
+        </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}TopNews - 编辑Topic{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>Topic {{ topic.content }}</h3>
+        <p>{{ topic.briefIntro }}</p>
+    </div>
+    <div>
+        {{ wtf.quick_form(form) }}
+    </div>
+{% endblock %}

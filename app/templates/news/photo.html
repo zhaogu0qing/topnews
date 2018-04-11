@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}TopNews - Old Photo{% endblock %}
+
+{% block page_content %}
+      <div class="row">
+        <div class="col-xs-12 col-sm-9">
+          <div class="jumbotron">
+            <h3>每天一张老照片</h3>
+          </div>
+          <div class="row">
+
+              {% for p in photos %}
+                <div class="col-xs-12 col-lg-7">
+                  <p>{{ p.content }}</p>
+                    <a href="{{ p.pictureUrls[0].picUrl }}" alt="点击查看大图"> <img src="{{ p.pictureUrls[0].smallPicUrl }}" class="img-responsive"></a>
+                </div><!--/.col-xs-6.col-lg-4-->
+              {% endfor %}
+
+          </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+      </div>
+{% endblock %}

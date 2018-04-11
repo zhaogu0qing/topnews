@@ -1,0 +1,7 @@
+亲爱的 {{ user.username }},
+欢迎来到TopNews!
+点击 {{ url_for('auth.confirm', token=token, _external=True) }}确认你的邮箱地址.
+或者复制粘贴下面的地址到你的浏览器:
+{{ url_for('auth.confirm', token=token, _external=True) }}
+Sincerely,
+TopNews 团队

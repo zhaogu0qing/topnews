@@ -1,0 +1,6 @@
+<p>亲爱的 {{ user.username }},</p>
+<p>点击 <a href="{{ url_for('auth.change_email', token=token, _external=True) }}">这里</a>确认你的邮箱地址.</p>
+<p>或者复制粘贴下面的地址到你的浏览器:</p>
+<p>{{ url_for('auth.change_email', token=token, _external=True) }}</p>
+<p>Sincerely,</p>
+<p>TopNews 团队</p>
