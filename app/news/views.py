@@ -16,6 +16,7 @@ from ..spider import run_spider
 from ..decorators import admin_required
 
 client = pymongo.MongoClient('mongodb://zgq:1234@47.93.186.132:27017/admin')
+# client = pymongo.MongoClient('mongodb://zgq:1234@123.206.33.158/:27017/admin')
 db = client.zgq
 
 

@@ -19,7 +19,19 @@
           <div class="row">
 
               {% for n in news %}
+
                 <div class="col-xs-6 col-lg-4">
+
+                    <!--<div class="card">-->
+                    <!--<img class="card-img-top" src="https://i0.hdslb.com/bfs/archive/27373851c34c1c2cf4755e752d178758737e85f4.jpg" alt="Card image cap">-->
+                    <!--<div class="card-block">-->
+                        <!--<h4 class="card-title">{{ n.title }}</h4>-->
+                        <!--<p class="card-text">{{ n.n_date }}</p>-->
+                        <!--<a href="news/news/{{ n._id }}">View details &raquo;</a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+
                   <p>{{ n.title }}</p>
                     <p>{{ n.n_date }}</p>
                   <p><a class="btn btn-default" href="news/news/{{ n._id }}" role="button">View details &raquo;</a></p>
