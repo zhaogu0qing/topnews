@@ -56,7 +56,7 @@ def get_jike():
 def jike_topic(topicId):
     topics = db.jike_topic.find({'is_crawl': True}).limit(24)
     current_topic = db.jike_topic.find_one({'topicId': topicId})
-    current_topic_items = db.jike.find({'topicId': topicId}, {'_id': 0}).sort([('_id', -1)]).limit(20)
+    current_topic_items = db.jike.find({'topicId': topicId}, {'_id': 0}).sort([('updatedAt', -1)]).limit(20)
     return render_template('news/jike.html',
                            topics=topics,
                            current_topic=current_topic,
