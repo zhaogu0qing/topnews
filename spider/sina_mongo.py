@@ -60,8 +60,8 @@ def api_parser(api_url):
         print news_count, title, url, n_type, n_date
         global news_count
         news_count += 1
-        if news_count > 10:
-            sys.exit(0)
+        # if news_count > 10:
+        #     sys.exit(0)
 
         res = requests.get(url)
         if res.status_code == 200:
