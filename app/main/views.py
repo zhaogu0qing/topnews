@@ -22,7 +22,7 @@ def index():
     client = pymongo.MongoClient('mongodb://123.206.33.158:27017')
     mongo_db = client.zgq
     all_news = []
-    sina_news = mongo_db.news.find({'source': 'sina', 'n_type': {'$ne': 'news'}}, {'html': 0}).sort([('n_date', -1)]).limit(20)
+    sina_news = mongo_db.news.find({'source': 'sina', 'n_type': {'$ne': 'news'}}, {'html': 0}).sort([('n_date', -1)]).limit(40)
     for n in sina_news:
         all_news.append(n)
     nhk_news = mongo_db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)
