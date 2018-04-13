@@ -16,27 +16,60 @@
             <h3>每天醒来世界发生了什么</h3>
             <p>sina/nhk</p>
             </div>
-          <div class="row">
 
-              {% for n in news %}
 
-                <div class="col-xs-6 col-lg-4">
+          <!--<div class="row">-->
 
-                    <!--<div class="card">-->
-                    <!--<img class="card-img-top" src="https://i0.hdslb.com/bfs/archive/27373851c34c1c2cf4755e752d178758737e85f4.jpg" alt="Card image cap">-->
+              <!--{% for n in news %}-->
+
+                <!--<div class="col-sm-6">-->
+
+                    <!--<div class="card" style="width: 28rem;">-->
+
+                        <!--<a href="news/news/{{ n._id }}">-->
+                                <!--{% if n.imgs %}-->
+                            <!--<img class="card-img-top img-responsive" src="{{ n.imgs[0] }}" alt="Card image cap">-->
+                                <!--{% else %}-->
+                            <!--<img class="card-img-top img-responsive" src="{{ url_for('static', filename = 'image/default_news_img.png') }}" alt="Card image cap">-->
+                                <!--{% endif %}-->
+                        <!--</a>-->
+
                     <!--<div class="card-block">-->
                         <!--<h4 class="card-title">{{ n.title }}</h4>-->
                         <!--<p class="card-text">{{ n.n_date }}</p>-->
-                        <!--<a href="news/news/{{ n._id }}">View details &raquo;</a>-->
+                        <!--&lt;!&ndash;<a href="news/news/{{ n._id }}">View details &raquo;</a>&ndash;&gt;-->
                     <!--</div>-->
                     <!--</div>-->
 
 
-                  <p>{{ n.title }}</p>
-                    <p>{{ n.n_date }}</p>
-                  <p><a class="btn btn-default" href="news/news/{{ n._id }}" role="button">View details &raquo;</a></p>
-                </div><!--/.col-xs-6.col-lg-4-->
-              {% endfor %}
-          </div>
+                  <!--&lt;!&ndash;<p>{{ n.title }}</p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p>{{ n.n_date }}</p>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<p><a class="btn btn-default" href="news/news/{{ n._id }}" role="button">View details &raquo;</a></p>&ndash;&gt;-->
+
+                <!--</div>&lt;!&ndash;/.col-xs-6.col-lg-4&ndash;&gt;-->
+              <!--{% endfor %}-->
+          <!--</div>-->
+
+            <div class="card-deck">
+
+                {% for n in news %}
+              <div class="card" style="width: 200px;">
+
+                <a href="news/news/{{ n._id }}">
+                        {% if n.imgs %}
+                    <img class="card-img-top img-responsive" src="{{ n.imgs[0] }}" alt="Card image cap">
+                        {% else %}
+                    <img class="card-img-top img-responsive" src="{{ url_for('static', filename = 'image/default_news_img.png') }}" alt="Card image cap">
+                        {% endif %}
+                </a>
+
+                <div class="card-body">
+                    <h4 class="card-title">{{ n.title }}</h4>
+                    <p class="card-text">{{ n.n_date }}</p>
+                </div>
+
+              </div>
+                {% endfor %}
+            </div>
 
 {% endblock %}
