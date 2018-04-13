@@ -16,10 +16,8 @@ GET_NUM = 300   # 每天各栏目返回新闻数
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
-client = pymongo.MongoClient('mongodb://localhost:27017')
+client = pymongo.MongoClient('mongodb://123.206.33.158:27017')
 db = client.zgq
 
 demand = {
@@ -34,6 +32,8 @@ demand = {
     '股市新闻': '98',
     '美股新闻': '99'
 }
+
+news_count = 0
 
 
 def api_parser(api_url):
@@ -52,10 +52,16 @@ def api_parser(api_url):
         if match:
             n_type = match.group(1)
             n_date = match.group(2)
+            n_date = datetime.datetime.strptime(n_date, '%Y-%m-%d')
+
         else:
             n_type = n_date = None
 
-        print title, url, n_type, n_date
+        print news_count, title, url, n_type, n_date
+        global news_count
+        news_count += 1
+        if news_count > 10:
+            sys.exit(0)
 
         res = requests.get(url)
         if res.status_code == 200:
@@ -76,9 +82,6 @@ def api_parser(api_url):
         for img in imgs:
             src = img.get('src')
             img_list.append(src)
-
-        print 'succ'
-        # print content
 
         item = {
             'source': 'sina',
