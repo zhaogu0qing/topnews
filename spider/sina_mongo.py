@@ -66,7 +66,7 @@ def api_parser(api_url):
         body = BeautifulSoup(html, 'html.parser').body
         content = body.find('div', {'id': 'artibody'}) or body.find('div', {'id': 'article'})
         img_list = []
-        imgs = body.find_all('img')
+        imgs = content.find_all('img')
         for img in imgs:
             src = img.get('src')
             img_list.append(src)

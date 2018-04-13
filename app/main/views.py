@@ -19,10 +19,10 @@ from ..decorators import admin_required, permission_required
 def index():
     # news
     # client = pymongo.MongoClient('mongodb://zgq:1234@47.93.186.132:27017/admin')
-    client = pymongo.MongoClient('mongodb://localhost:27017')
+    client = pymongo.MongoClient('mongodb://123.206.33.158:27017')
     mongo_db = client.zgq
     all_news = []
-    sina_news = mongo_db.news.find({'source': 'sina', 'n_type': {'$ne': 'news'}}, {'html': 0}).sort([('_id', -1)]).limit(20)
+    sina_news = mongo_db.news.find({'source': 'sina', 'n_type': {'$ne': 'news'}}, {'html': 0}).sort([('crawl_date', -1)]).limit(20)
     for n in sina_news:
         all_news.append(n)
     nhk_news = mongo_db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)
