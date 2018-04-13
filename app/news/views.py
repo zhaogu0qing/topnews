@@ -15,7 +15,8 @@ from .forms import JikeTopicForm
 from ..spider import run_spider
 from ..decorators import admin_required
 
-client = pymongo.MongoClient('mongodb://localhost:27017')
+client = pymongo.MongoClient('mongodb://123.206.33.158:27017')
+# client = pymongo.MongoClient('mongodb://localhost:27017')
 # client = pymongo.MongoClient('mongodb://zgq:1234@123.206.33.158/:27017/admin')
 db = client.zgq
 
@@ -56,7 +57,7 @@ def get_jike():
 def jike_topic(topicId):
     topics = db.jike_topic.find({'is_crawl': True}).limit(24)
     current_topic = db.jike_topic.find_one({'topicId': topicId})
-    current_topic_items = db.jike.find({'topicId': topicId}, {'_id': 0}).sort([('updatedAt', -1)]).limit(20)
+    current_topic_items = db.jike.find({'topicId': topicId}, {'_id': 0}).sort([('createdAt', -1)]).limit(20)
     return render_template('news/jike.html',
                            topics=topics,
                            current_topic=current_topic,
