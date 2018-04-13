@@ -6,6 +6,7 @@
 DONE:
 
 正式从阿里云迁到腾讯云服务器
+以前的版本保留在 http://zhaoguoqing.info:8090
 
 TODO:
 
