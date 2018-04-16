@@ -55,7 +55,7 @@ def get_jike():
 
 @news.route('/jike/topic/<int:topicId>')
 def jike_topic(topicId):
-    topics = db.jike_topic.find({'is_crawl': True}).limit(24)
+    topics = db.jike_topic.find({'is_crawl': True})
     current_topic = db.jike_topic.find_one({'topicId': topicId})
     current_topic_items = db.jike.find({'topicId': topicId}, {'_id': 0}).sort([('createdAt', -1)]).limit(20)
     return render_template('news/jike.html',
