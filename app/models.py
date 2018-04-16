@@ -76,7 +76,6 @@ class Role(db.Model):
         db.session.commit()
 
 
-
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -103,7 +102,6 @@ class User(UserMixin, db.Model):
                                lazy='dynamic',
                                cascade='all, delete-orphan')
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
-
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -329,9 +327,13 @@ class Post(db.Model):
                         'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
                         'h1', 'h2', 'h3', 'p', 'img']
 
+        allowed_attrs = {'*': ['class'],
+                         'a': ['href', 'rel'],
+                         'img': ['src', 'alt']}
+
         target.body_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
-            tags=allowed_tags, strip=True
+            tags=allowed_tags, strip=True, attributes=allowed_attrs
         ))
 
     def to_json(self):
@@ -354,6 +356,7 @@ class Post(db.Model):
         return Post(body=body)
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'
