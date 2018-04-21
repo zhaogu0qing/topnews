@@ -112,6 +112,12 @@ div.flask-pagedown-preview h2 {
 div.flask-pagedown-preview h3 {
     font-size: 120%;
 }
+
+.post-body img {
+    max-width: 100%;
+    height: auto;
+}
+
 .post-body h1 {
     font-size: 140%;
 }
