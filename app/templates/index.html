@@ -22,19 +22,21 @@
 
               {% for n in news %}
 
-                <div class="col-sm-4">
+                <div class="col-sm-4 news">
 
-                    <div class="card" style="width: 200px; height: 300px;">
+                    <div class="card news_card">
 
-                        <a href="news/news/{{ n._id }}">
+                        <div class="card_img">
+                            <a href="news/news/{{ n._id }}">
                                 {% if n.imgs %}
                             <img class="card-img-top img-responsive" src="{{ n.imgs[0] }}" alt="Card image cap">
                                 {% else %}
                             <img class="card-img-top img-responsive" src="{{ url_for('static', filename = 'image/default_news_img.png') }}" alt="Card image cap">
                                 {% endif %}
-                        </a>
+                            </a>
+                        </div>
 
-                        <div class="card-body">
+                        <div class="card-body card_down">
                             <h4 class="card-title">{{ n.title }}</h4>
                             <p class="card-text">{{ n.n_date }}</p>
                         </div>
