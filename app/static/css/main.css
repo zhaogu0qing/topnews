@@ -18,6 +18,7 @@ body {
     max-width: 70%;
     max-height: 70%;
     margin: 20px;
+    z-index: 1;
 }
 
 .card_img {
@@ -28,6 +29,12 @@ body {
 .news img {
     max-width: 90%;
     max-height: 90%;
+    transition-duration:0.5s; /*过度的时间为0，5秒*/
+}
+
+.news img:hover {
+    transform:scale(2);
+    z-index: 9999;
 }
 
 .card_down {
