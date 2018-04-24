@@ -16,17 +16,51 @@
            <h3>Jike</h3>
               <p>{{ current_topic.content }}</p>
           </div>
-          <div class="row">
+
+
+
+            <div class="row">
 
               {% for n in current_topic_items %}
-                <div class="col-xs-6 col-lg-4">
-                  <p>{{ n.content[:100] + '...' }}</p>
-                    <p>{{ n.createdAt[:10] }}</p>
-                  <p><a class="btn btn-default" href="{{ n.linkUrl }}" role="button">View details &raquo;</a></p>
+
+                <div class="col-sm-4 news">
+
+                    <div class="card news_card">
+
+                        <!--<div class="card_img">-->
+                        <!--<a href="{{ n.linkUrl }}">-->
+                        <!--<img class="card-img-top img-responsive"-->
+                             <!--src="{{ url_for('static', filename = 'image/default_news_img.png') }}"-->
+                             <!--alt="Card image cap"-->
+                             <!--style="width: 50px;"-->
+                        <!--&gt;-->
+                        <!--</a>-->
+                        <!--</div>-->
+                        <a href="{{ n.linkUrl }}" class="a_block">
+                        <div class="card-body card_down">
+                            <h4 class="card-title">{{ n.content[:100] + '...' }}</h4>
+                            <h5 class="card-text">{{ n.createdAt[:10] }}</h5>
+                        </div>
+                        </a>
+                    </div>
+
                 </div><!--/.col-xs-6.col-lg-4-->
               {% endfor %}
+          </div>
 
-          </div><!--/row-->
+
+
+          <!--<div class="row">-->
+
+              <!--{% for n in current_topic_items %}-->
+                <!--<div class="col-xs-6 col-lg-4">-->
+                  <!--<p>{{ n.content[:100] + '...' }}</p>-->
+                    <!--<p>{{ n.createdAt[:10] }}</p>-->
+                  <!--<p><a class="btn btn-default" href="{{ n.linkUrl }}" role="button">View details &raquo;</a></p>-->
+                <!--</div>&lt;!&ndash;/.col-xs-6.col-lg-4&ndash;&gt;-->
+              <!--{% endfor %}-->
+
+          <!--</div>&lt;!&ndash;/row&ndash;&gt;-->
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">

@@ -42,6 +42,11 @@ body {
     height: 100px;
 }
 
+/*.a_block {*/
+    /*display: block;*/
+    /*background-color: rgba(152, 253, 255, 0.52);*/
+/*}*/
+
 .profile-thumbnail {
     position: absolute;
 }
