@@ -287,6 +287,7 @@ class User(UserMixin, db.Model):
             return None
         return User.query.get(data['id'])
 
+
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
         return False

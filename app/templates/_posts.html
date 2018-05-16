@@ -39,10 +39,10 @@
                         <span class="label label-danger">删除 [管理员]</span>
                     </a>
                     {% endif %}
-                    <a href="{{ url_for('.post', id=post.id) }}">
+                    <a href="{{ url_for('.comment', id=post.id) }}">
                         <span class="label label-default">详细</span>
                     </a>
-                    <a href="{{ url_for('.post', id=post.id) }}">
+                    <a href="{{ url_for('.comment', id=post.id) }}">
                         <span class="label label-primary">
                             {{ post.comments.count() }} 评论
                         </span>

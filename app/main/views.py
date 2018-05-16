@@ -126,8 +126,8 @@ def edit_profile_admin(id):
     return render_template('edit_profile.html', form=form, user=user)
 
 
-@main.route('/post/<int:id>', methods=['GET', 'POST'])
-def post(id):
+@main.route('/comment/<int:id>', methods=['GET', 'POST'])
+def comment(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
     if form.validate_on_submit():
@@ -137,7 +137,7 @@ def post(id):
         db.session.add(comment)
         db.session.commit()
         flash('你的评论已经发布')
-        return redirect(url_for('.post', id=post.id, page=-1))
+        return redirect(url_for('.comment', id=post.id, page=-1))
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments.count() - 1) / current_app.config['TOPNEWS_COMMENTS_PER_PAGE'] + 1
@@ -167,7 +167,7 @@ def edit(id):
     return render_template('edit_post.html', form=form)
 
 
-@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+@main.route('/delete/<int:id>', methods=['GET'])
 @login_required
 def delete(id):
     post = Post.query.get_or_404(id)
