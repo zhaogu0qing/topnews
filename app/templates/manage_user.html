@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}TopNews - 用户管理{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>用户管理</h1>
+</div>
+
+{% for u in users %}
+<a href="/user/{{ u.username }}"><h3>{{ u.username }}</h3></a>
+{% endfor %}
+{% endblock %}

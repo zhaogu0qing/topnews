@@ -298,6 +298,23 @@ def moderate_disable(id):
     return redirect(url_for('.moderate', page=request.args.get('page', 1, type=int)))
 
 
+@main.route('/manage-user')
+@login_required
+@permission_required(Permission.MODERATE_COMMENTS)
+def manage_user():
+    page = request.args.get('page', 1, type=int)
+    pagination = User.query.order_by(User.member_since.desc()).paginate(
+        page, per_page=current_app.config['TOPNEWS_COMMENTS_PER_PAGE'], error_out=False
+    )
+    users = pagination.items
+
+    # users = User.query.order_by(User.member_since.desc())
+
+    return render_template('manage_user.html', users=users,
+                           pagination=pagination, page=page,
+                           )
+
+
 
 
 

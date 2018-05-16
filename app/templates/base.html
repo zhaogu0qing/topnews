@@ -44,7 +44,8 @@
                 {% endif %}
 
                 {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                <li><a href="{{ url_for('main.moderate') }}">管理评论</a> </li>
+                <li><a href="{{ url_for('main.moderate') }}">评论管理</a> </li>
+                <li><a href="{{ url_for('main.manage_user') }}">用户管理</a> </li>
                 {% endif %}
             </ul>
 
