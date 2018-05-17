@@ -50,7 +50,7 @@ def add_post():
         db.session.add(post)
         db.session.commit()
         flash('文章已发布')
-        return redirect(url_for('.post', id=post.id))
+        return redirect(url_for('.comment', id=post.id))
     return render_template('add_post.html', form=form)
 
 
