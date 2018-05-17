@@ -17,22 +17,7 @@ from ..decorators import admin_required, permission_required
 
 @main.route('/', methods=['GET'])
 def index():
-    # news
-    # client = pymongo.MongoClient('mongodb://zgq:1234@47.93.186.132:27017/admin')
-    client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:27017/admin')
-    mongo_db = client.zgq
-    all_news = []
-    sina_news = mongo_db.news.find(
-        {'source': 'sina', 'n_type': {'$ne': 'sports'}},
-        {'html': 0}).sort([('n_date', -1)]).limit(20)
-    for n in sina_news:
-        all_news.append(n)
-    nhk_news = mongo_db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)
-    for n in nhk_news:
-        all_news.append(n)
-
-    return render_template('index.html',
-                           news=all_news)
+    return redirect(url_for('news.news_index'))
 
 
 @main.route('/article', methods=['GET', 'POST'])
@@ -64,6 +49,7 @@ def add_post():
                     author=current_user._get_current_object())
         db.session.add(post)
         db.session.commit()
+        flash('文章已发布')
         return redirect(url_for('.post', id=post.id))
     return render_template('add_post.html', form=form)
 
@@ -162,7 +148,7 @@ def edit(id):
         db.session.add(post)
         db.session.commit()
         flash('文章已经更新')
-        return redirect(url_for('.post', id=post.id))
+        return redirect(url_for('.comment', id=post.id))
     form.body.data = post.body
     return render_template('edit_post.html', form=form)
 

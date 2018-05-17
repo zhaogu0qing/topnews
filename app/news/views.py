@@ -21,19 +21,23 @@ client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:270
 db = client.zgq
 
 
-# @news.route('/news')
-# def get_news():
-#     all_news = []
-#     sina_news = db.news.find({'source': 'sina', 'n_type': {'$ne': 'news'}}, {'html': 0}).sort([('_id', -1)]).limit(20)
-#     for n in sina_news:
-#         all_news.append(n)
-#     nhk_news = db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)
-#     for n in nhk_news:
-#         all_news.append(n)
-#     return render_template('news/news.html', news=all_news)
+@news.route('/')
+def news_index():
+    all_news = []
+    sina_news = db.news.find(
+        {'source': 'sina', 'n_type': {'$ne': 'sports'}},
+        {'html': 0}).sort([('n_date', -1)]).limit(20)
+    for n in sina_news:
+        all_news.append(n)
+    nhk_news = db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)
+    for n in nhk_news:
+        all_news.append(n)
+
+    return render_template('index.html',
+                           news=all_news)
 
 
-@news.route('/news/<string:news_id>')
+@news.route('/new_detail/<string:news_id>')
 def news_page(news_id):
     news = db.news.find_one({'_id': ObjectId(news_id)}, {'html': 0})
     return render_template('news/news_detail.html', news=news)

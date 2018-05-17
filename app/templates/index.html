@@ -23,7 +23,8 @@
                 <div class="col-sm-4 news">
                     <div class="card news_card">
                         <div class="card_img">
-                            <a href="news/news/{{ n._id }}">
+                            <!--<a href="news/news/{{ n._id }}">-->
+                            <a href="{{ url_for('news.news_page', news_id=n._id) }}">
                                 {% if n.imgs %}
                             <img class="card-img-top img-responsive"
                                  src="{{ n.imgs[0] }}"
