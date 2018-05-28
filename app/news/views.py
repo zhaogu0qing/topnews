@@ -14,9 +14,8 @@ from . import news
 from .forms import JikeTopicForm
 from ..decorators import admin_required
 
-# client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:27017/admin')
-client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@localhost:27017/admin')
-# client = pymongo.MongoClient('mongodb://zgq:1234@123.206.33.158/:27017/admin')
+client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:27017/admin')
+# client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@localhost:27017/admin')
 db = client.zgq
 
 
@@ -84,7 +83,6 @@ def modify_topic(topic_id):
     if form.validate_on_submit():
         db.jike_topic.update({'topicId': topic_id}, {'$set': {'is_crawl': form.is_crawl.data}})
         flash('Topic状态已更新')
-        run_spider()
         return redirect(url_for('.get_jike'))
     form.is_crawl.data = topic.get('is_crawl')
     return render_template('news/edit_topic.html', form=form, topic=topic)

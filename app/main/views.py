@@ -5,7 +5,6 @@
 @File    : views.py
 @Software: PyCharm
 """
-import pymongo
 from flask import render_template, session, redirect, url_for, abort, flash, request, current_app, make_response
 from flask_login import login_required, current_user
 from . import main

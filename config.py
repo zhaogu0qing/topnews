@@ -29,8 +29,8 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:ZGQdemysql@localhost/final_design'
-    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:ZGQdemysql@123.206.33.158/final_design'
+    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:ZGQdemysql@localhost/final_design'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:ZGQdemysql@123.206.33.158/final_design'
 
 
 class TestingConfig(Config):
