@@ -12,7 +12,6 @@ import pymongo
 from bson import ObjectId
 from . import news
 from .forms import JikeTopicForm
-from ..spider import run_spider
 from ..decorators import admin_required
 
 client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:27017/admin')
@@ -26,7 +25,7 @@ def news_index():
     all_news = []
     sina_news = db.news.find(
         {'source': 'sina', 'n_type': {'$ne': 'sports'}},
-        {'html': 0}).sort([('n_date', -1)]).limit(20)
+        {'html': 0}).sort([('n_date', -1)]).limit(11)
     for n in sina_news:
         all_news.append(n)
     nhk_news = db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)

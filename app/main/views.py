@@ -162,6 +162,7 @@ def delete(id):
         abort(403)
     db.session.delete(post)
     db.session.commit()
+    flash('文章已经删除')
     return redirect(url_for('.article', username=current_user.username))
 
 
