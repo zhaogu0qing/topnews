@@ -14,8 +14,8 @@ from . import news
 from .forms import JikeTopicForm
 from ..decorators import admin_required
 
-client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:27017/admin')
-# client = pymongo.MongoClient('mongodb://localhost:27017')
+# client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@123.206.33.158:27017/admin')
+client = pymongo.MongoClient('mongodb://admin_zgq:ZGQ_mongodb@localhost:27017/admin')
 # client = pymongo.MongoClient('mongodb://zgq:1234@123.206.33.158/:27017/admin')
 db = client.zgq
 
