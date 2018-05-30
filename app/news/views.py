@@ -24,7 +24,7 @@ def news_index():
     all_news = []
     sina_news = db.news.find(
         {'source': 'sina', 'n_type': {'$ne': 'sports'}},
-        {'html': 0}).sort([('n_date', -1)]).limit(11)
+        {'html': 0}).sort([('n_date', -1)]).limit(20)
     for n in sina_news:
         all_news.append(n)
     nhk_news = db.news.find({'source': 'nhk'}, {'html': 0}).sort([('_id', -1)]).limit(10)
